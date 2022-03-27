@@ -1,0 +1,11 @@
+<div class="text-area-container">
+    <div #backdrop class="backdrop">
+      <div class="highlights" [innerHTML]="highlightedText"></div>
+    </div>
+    <textarea
+      [(ngModel)]="textValue"
+      (scroll)="handleScroll()"
+      #textarea
+      (change)="shareData()"
+    ></textarea>
+  </div>

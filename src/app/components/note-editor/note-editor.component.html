@@ -1,0 +1,12 @@
+<div class="note-editor-wrapper d-flex align-items-center justify-content-center flex-column">
+    <div>{{title}}</div>
+    <div class="edit-wrapper m-2">
+        <!-- <textarea #inputField type="text">{{noteEntity?.message}}</textarea> -->
+        <app-textarea (returnTextValue)="updateMessage($event)" [textValue]="noteEntity?.message || ''" #inputField></app-textarea>
+    </div>
+    <div class="buttons-wrapper m-2">
+       <!-- <button (click)="onSaveClick(inputField.value)" class="btn btn-dark me-2">Save</button> -->
+       <button (click)="onSaveClick()" class="btn btn-dark me-2">Save</button>
+       <button (click)="onDiscardClick()" class="btn btn-dark ms-2">Discard</button>
+    </div>
+</div>

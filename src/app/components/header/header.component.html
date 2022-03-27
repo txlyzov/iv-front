@@ -1,0 +1,7 @@
+<div class="header-wrapper d-flex justify-content-between px-5 py-2">
+    <div class="input-group">
+        <label class="btn btn-light">Search by tag</label>
+        <input (change)="onSearchClick(searchInput.value)" #searchInput type="search">
+    </div>
+    <button (click)="onCreateClick($event.target)" class="btn btn-light">Create</button>
+</div>

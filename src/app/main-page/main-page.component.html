@@ -1,0 +1,23 @@
+<app-header (updateNotesList)="updateNotesList($event)" (editStageChange)="setIsEditStage($event)"></app-header>
+
+<div *ngIf="!isEditStage; then viewMode else editMode"></div>
+
+<ng-template #viewMode>
+        <div class="container my-3">
+        <div *ngIf="notes.length > 0; else noNotesFound" class="row  d-flex justify-content-center align-items-center">
+            <div class="col-3 m-1" *ngFor="let note of notes; let index = index">
+                <app-note (editStageChange)="setIsEditStage($event)" (deleteNote)="deleteNote($event)" [noteData]="{note,index}" ></app-note>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #noNotesFound>
+    <h1 class="text-center">No notes found</h1>
+</ng-template>
+
+<ng-template #editMode>
+    <div class="container my-3">
+        <app-note-editor [noteId]="noteForEdit" (return)="setIsEditStage($event)"></app-note-editor>
+    </div>
+</ng-template>
