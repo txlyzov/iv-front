@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-note',
   templateUrl: './note.component.html',
   styleUrls: ['./note.component.scss']
 })
-export class NoteComponent implements OnInit {
+export class NoteComponent {
 
   @Input() noteData: any;
 
@@ -14,9 +14,6 @@ export class NoteComponent implements OnInit {
   @Output() deleteNote: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
   onEditClick(){
     this.editStageChange.emit({ isEditStage :true,noteIndex: this.noteData.index});

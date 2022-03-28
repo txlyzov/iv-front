@@ -5,13 +5,11 @@ import {
   EventEmitter,
   forwardRef,
   Input,
-  OnInit,
   Output,
   ViewChild
 } from "@angular/core";
 import {
   ControlValueAccessor,
-  NG_VALIDATORS,
   NG_VALUE_ACCESSOR
 } from "@angular/forms";
 
@@ -30,10 +28,8 @@ import {
 })
 export class TextareaComponent
   implements  ControlValueAccessor {
-  constructor() {}
-  @Input() highlightTexts: string[] = ['text'];
 
-  @Input() textValue: string = "hello there text";
+  @Input() textValue: string = "";
 
   @Output() returnTextValue: EventEmitter<any> = new EventEmitter();
 
@@ -41,6 +37,8 @@ export class TextareaComponent
 
   @ViewChild("textarea") $textarea?: ElementRef<HTMLTextAreaElement>;
 
+  constructor() {}
+  
   get highlightedText () {
     return this.applyHighlights(this.textValue)
   }
@@ -52,6 +50,7 @@ export class TextareaComponent
     return text;
     
   }
+
   handleScroll() {
     var scrollTop = this.$textarea!.nativeElement.scrollTop;
     this.$backdrop!.nativeElement.scrollTop = scrollTop;
@@ -61,6 +60,7 @@ export class TextareaComponent
   }
 
   onChanges?: ($value: any) => void;
+
   onTouched?: () => void;
 
   writeValue(value: any): void {
@@ -68,17 +68,17 @@ export class TextareaComponent
       this.textValue = value;
     }
   }
+
   registerOnChange(fn: any): void {
     this.onChanges = fn;
   }
+
   registerOnTouched(fn: any): void {
     
     this.onTouched = fn;
   }
 
-
   shareData(){
     this.returnTextValue.emit(this.textValue);
   }
 }
-

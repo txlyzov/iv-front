@@ -4,7 +4,6 @@
 
 export const environment = {
   production: false,
-  apiServerBaseUrl1: 'https://inspiring-kelpie-c981bb.netlify.app',
   apiServerBaseUrl: 'http://localhost:3000',
 };
 

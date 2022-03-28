@@ -9,7 +9,6 @@ import { NoteService } from 'src/app/services/note.service';
 })
 export class NoteEditorComponent implements OnInit {
 
-
   title?: string;
 
   noteEntity: IData = {
